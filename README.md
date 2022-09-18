@@ -5,21 +5,9 @@
 [![Go ReportCard](https://goreportcard.com/badge/muesli/obs-cli)](https://goreportcard.com/report/muesli/obs-cli)
 [![GoDoc](https://godoc.org/github.com/golang/gddo?status.svg)](https://pkg.go.dev/github.com/muesli/obs-cli)
 
-OBS-cli is a command-line remote control for OBS. It requires the
-[obs-websocket](https://github.com/Palakis/obs-websocket) plugin to be installed
-on your system.
+OBS-cli is a command-line remote control for OBS. As of OBS v28 obs-websocket v5 is included by default.
 
 ## Installation
-
-### Packages & Binaries
-
-On Arch Linux you can simply install the package from the AUR:
-
-    yay -S obs-cli
-
-Or download a binary from the [releases](https://github.com/muesli/obs-cli/releases)
-page. Linux (including ARM) binaries are available, as well as Debian and RPM
-packages.
 
 ### Build From Source
 
@@ -29,15 +17,30 @@ working Go environment (Go 1.12 or higher is required). See the
 
 To install obs-cli, simply run:
 
-    go install github.com/muesli/obs-cli@latest
+```
+git clone https://github.com/onyx-and-iris/obs-cli.git
+cd obs-cli
+go install
+```
 
 ## Usage
 
-All commands support the following flags:
+Load connection info from toml config. A valid `config.toml` might look like this:
 
-- `--host`: which OBS instance to connect to
-- `--port`: port to connect to
-- `--password`: password used for authentication
+```toml
+[connection]
+Host="localhost"
+Port=4455
+Password="mystrongpass"
+```
+
+It should be placed in `home directory / .obs_cli /`
+
+Otherwise, all commands support the following flags:
+
+-   `--host`: which OBS instance to connect to
+-   `--port`: port to connect to
+-   `--password`: password used for authentication
 
 ### Streams
 
